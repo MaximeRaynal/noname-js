@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Template Rendering</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Template Rendering</h1>
+            <p>Cliquer sur le bouton pour lancer le test de templating.</p>
+            <p><a id="launch" class="btn btn-primary btn-lg" href="#" role="button">Template it !</a></p>
+
+        </div>
+        <h3>Result :</h3>
+        <div id="target-result">
+
+        </div>
+    </div>
+    <div id="test-template" class="template">
+        <p>This is a {{ adj }} Template. Build with {{adj2 }} by {{ info.author }}.</p>
+    </div>
+    <script src="template-rendering.js" type="text/javascript" charset="utf-8"></script>
+    <script src="template-rendering-test.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
