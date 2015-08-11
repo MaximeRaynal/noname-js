@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test http request</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Hello !</h2>
+<script type="text/javascript" src="http-request.js"></script>
+<script type="text/javascript">
+    var congig = {
+        url: "http://enable-cors.org/",
+        method: "GET",
+        debug: true};
+
+    var request = new HttpRequest(congig);
+
+    function done(a,b,c) {
+        alert(a);
+        alert(b);
+        alert(c);
+    }
+
+    request.done(done).send();
+</script>
+</body>
+</html>
