@@ -22,7 +22,27 @@
     <div id="test-template" class="template">
         <p>This is a {{ adj }} Template. Build with {{adj2 }} by {{ info.author }}.</p>
     </div>
-    <script src="template-rendering.js" type="text/javascript" charset="utf-8"></script>
-    <script src="template-rendering-test.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../template-rendering.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.getElementById('launch').addEventListener('click', function() {
+
+                var src = {};
+
+                src.author = 'Maxime';
+
+                var result = Template.render(document.getElementById('test-template'),
+                     { adj:'simple',
+                       adj2:'love',
+                       info: src});
+
+                document.getElementById('target-result').appendChild(result);
+
+            });
+        });
+    </script>
 </body>
 </html>
