@@ -22,7 +22,9 @@ function Template() {
 }
 
 Template.config = {
-    notFoundReplacment: null
+    notFoundReplacment: null,
+    htmlTrim: true
+
 };
 
 Template.config.templatesSelector = function() {
@@ -43,6 +45,13 @@ Template.render = function (template, datas) {
     }
 
     var result = template.innerHTML;
+
+    // Remove useless withespace who can make style issues
+    if (Template.config.htmlTrim) {
+        result = result.trim().replace(/>(\s+)</g, '><');
+        result = result.trim().replace(/>(\s+){/g, '>{');
+        result = result.trim().replace(/}(\s+)</g, '}<');
+    }
 
     var variable;
     while ((variable = Template.variableRegex.exec(template.innerHTML)) !== null) {
