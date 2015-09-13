@@ -67,8 +67,6 @@ Template.render = function (template, datas) {
         }
     }
 
-
-
     return Template.strToDOM(result);
 };
 
@@ -77,10 +75,10 @@ Template.strToDOM = function (s){
     var  d=document
         ,i
         ,a=d.createElement("div")
-        ,b=d.createDocumentFragment();
+        ,b=d.createElement('div');
     a.innerHTML=s;
     while(i=a.firstChild)b.appendChild(i);
-    return b;
+    return b.firstChild;
 };
 
 document.addEventListener('DOMContentLoaded', function() {
