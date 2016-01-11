@@ -78,7 +78,14 @@ function HttpRequest(config) {
         this.xhr.onreadystatechange = this.onReadyStateChangeCallback;
 
         if (this.config.method != 'GET') {
-            this.xhr.send(config.data);
+
+            var encapsuledData = new FormData();
+
+            for (var prop in config.data) {
+                encapsuledData.append(prop, config.data[prop]);
+            }
+
+            this.xhr.send(encapsuledData);
         } else {
             this.xhr.send();
         }
@@ -95,12 +102,13 @@ function HttpRequest(config) {
             target.open();
             target.write(this.xhr.responseText);
             target.close();
-
         }
 
-        this.errorCallBack.forEach(function () {
+        var data = this.xhr.responseText;
+
+        this.errorCallBack.forEach(function (elmnt) {
             elmnt(data, this.xhr.status, this.xhr);
-        });
+        }.bind(this));
     }).bind(this);
 
     /**
